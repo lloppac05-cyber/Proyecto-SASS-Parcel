@@ -1,0 +1,18 @@
+@use '../abstracts/' as core;
+
+.productos-lista{
+    grid-column:  2/14;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 2rem;
+
+    // tablets
+    @include core.response(m) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    // móviles
+    @include core.response(s) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

@@ -1,0 +1,69 @@
+// Importar variables
+@use "variables" as core;
+
+// Mixin para centrar con flexbox
+@mixin centrar($justify: center, $align: center, $direccion: column) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direccion;
+}
+
+// Mixin para alinear a la izquierda
+@mixin alinear-izquierda($direccion: column, $padding-lateral: 5%) {
+    display: flex;
+    flex-direction: $direccion;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    padding-left: $padding-lateral;
+}
+
+// Mixin para alinear a la derecha
+@mixin alinear-derecha($direccion: column, $padding-lateral: 5%) {
+    display: flex;
+    flex-direction: $direccion;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: right;
+    padding-left: $padding-lateral;
+}
+
+
+// Mixin para estilos de navegación
+@mixin nav {
+    ul {
+        display: flex;
+        list-style: none;
+        gap: 2rem; 
+        padding: 1rem;
+    }
+
+    a {
+        text-decoration: none;
+    }
+}
+
+// Mixin para grid flexible
+@mixin grid-flexible($min-size: 18rem, $gap: 1.5rem){
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($min-size, 1fr));
+    gap: $gap;
+}
+
+// Mixin para media queries responsive
+@mixin response($breakpoint) {
+    @if $breakpoint == sm {
+        @media (max-width: 640px) {
+            @content;
+        }
+    } @else if $breakpoint == md {
+        @media (max-width: 1024px) {
+            @content;
+        }
+    } @else if $breakpoint == lg {
+        @media (max-width: 1280px) {
+            @content;
+        }
+    }
+}

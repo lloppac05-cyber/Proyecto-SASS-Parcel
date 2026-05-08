@@ -1,0 +1,13 @@
+{
+  "name": "final-sass-parcel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "sass -w scss/styles.scss css/style.css"
+  },
+  "keywords": [],
+  "author": "LauraLopera",
+  "license": "ISC",
+  "type": "commonjs"
+}

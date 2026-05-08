@@ -1,0 +1,55 @@
+@use '../abstracts/' as core;
+
+*
+{
+    font-family: core.$font-nav;
+}
+
+.header {
+    @include core.alinear-izquierda();
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 50%);
+    padding: 1rem 0;
+    height: auto;
+    max-height: 140px;
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+
+.first-nav
+{
+    @include core.centrar();
+    
+     grid-area: 1 / 3 / 2 / 4; 
+     ul
+     {
+        display: flex;
+        gap: 2rem;
+        flex-direction: row;
+        justify-content: space-between;
+        li
+        {
+            margin-right: 2vh;
+            list-style: none;
+            a
+            {
+                text-decoration: none;
+            }
+        }
+     }
+}
+
+.logo {
+    margin-bottom: 1rem;
+    img {
+        height: 60px;
+        width: auto;
+    }
+}

@@ -1,0 +1,35 @@
+@use '../abstracts/' as core;
+
+*
+{
+    font-family: core.$font-nav;
+}
+
+.footer {
+    background-color: core.color( tertiary);
+    img{
+        height: 10rem;
+        width: auto;
+    }
+    &__social {
+        @include core.alinear-derecha(flex, 80%);
+        gap: 2rem;
+
+        ion-icon {
+            width: 2rem;
+            height: 2rem;
+            padding: 0.5rem;
+            transition: transform 0.3s ease;
+            border: 0.1rem solid core.color(secondary);
+            border-radius: 50%;
+            color: core.color(light);
+            background-color: core.color(secondary);
+            margin-bottom: 1rem;
+
+            &:hover {
+                transform: scale(1.1);
+                filter: grayscale(1);
+            }
+        }
+    }
+}

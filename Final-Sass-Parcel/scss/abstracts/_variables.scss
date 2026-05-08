@@ -1,0 +1,32 @@
+@use "sass:map";
+
+// Paleta de colores
+$colors: (
+    primary: #010440,
+    secondary: #020659,
+    tertiary: #F2A922,
+    light: #d3eab7,
+    quaternary: #c44b88
+);
+
+// Dimensiones (tamaños)
+$dimensiones:(
+    s: 2rem,
+    m: 4rem,
+    l: 8rem,
+);
+
+// Variables globales
+$font-nav: Arial, sans-serif;
+
+// Función para obtener colores
+/// @param {string} $name - Nombre del color
+@function color($name){
+    @return map.get($colors, $name);
+}
+
+// Función para obtener dimesion
+/// @param {string} $dim - dimension
+@function dimension($dim){
+    @return map.get($dimensiones, $dim);
+}
