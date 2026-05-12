@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -111,22 +112,132 @@ img {
   height: 2rem;
   padding: 0.5rem;
   transition: transform 0.3s ease;
-  border: 0.1rem solid #020659;
+  border: 0.1rem solid rgba(3, 10, 135, 0.9176470588);
   border-radius: 50%;
   color: #d3eab7;
-  background-color: #020659;
+  background-color: #010440;
   margin-bottom: 1rem;
 }
 .footer__social ion-icon:hover {
   transform: scale(1.1);
-  filter: grayscale(1);
+  background-color: rgba(3, 10, 135, 0.9176470588);
 }
 
 .productos-lista {
   grid-column: 2/14;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
+  padding: 2rem 0;
+}
+.productos-lista h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  grid-column: 1/-1;
+  font-family: "Berkshire Swash", serif;
+  color: #010440;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  letter-spacing: 0.1rem;
+  position: relative;
+}
+.productos-lista h2::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 4px;
+  background-color: #c89b3c;
+  margin-top: 0.7rem;
+  border-radius: 10px;
+}
+@media (max-width: 1024px) {
+  .productos-lista {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .productos-lista {
+    grid-template-columns: 1fr;
+  }
+}
+
+.producto-tarjeta {
+  background-color: white;
+  border-radius: 2rem;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.35s ease;
+  display: flex;
+  flex-direction: column;
+}
+.producto-tarjeta:hover {
+  transform: translateY(10px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+}
+.producto-tarjeta__media {
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+}
+.producto-tarjeta__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.producto-tarjeta:hover .producto-tarjeta__media img {
+  transform: scale(1.05);
+}
+.producto-tarjeta__contenido {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.producto-tarjeta__titulo {
+  font-family: "Berkshire Swash", serif;
+  color: rgba(3, 10, 135, 0.9176470588);
+  font-size: 1.5rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.producto-tarjeta__texto {
+  color: #444;
+  line-height: 1.7;
+  font-size: 1rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.producto-tarjeta__etiqueta {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: #c89b3c;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 3rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+.producto-tarjeta .ver-mas {
+  margin-top: 1rem;
+  width: 8rem;
+  height: auto;
+  padding: 0.5rem 0rem 0.5rem 0rem;
+  background-color: #F2A922;
+  color: #010440;
+  border-radius: 20% 20% 20% 20%;
+  border: 1px solid rgba(3, 10, 135, 0.9176470588);
 }
 
 .heading {
@@ -161,7 +272,7 @@ img {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("../sassdoc/assets/images/morenita-derecha.png");
+  background-image: url("../src/assets/images/morenita-derecha.png");
   background-size: cover;
   background-position: right;
   background-repeat: no-repeat;
@@ -177,7 +288,7 @@ img {
   margin: 0;
 }
 .first-nav ul li a {
-  color: #020659;
+  color: rgba(3, 10, 135, 0.9176470588);
   text-decoration: none;
   font-weight: 500;
   text-transform: uppercase;
@@ -237,7 +348,7 @@ img {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("../sassdoc/assets/images/morenita-derecha.png");
+  background-image: url("../src/assets/images/morenita-derecha.png");
   background-size: cover;
   background-position: right center;
   z-index: -2;

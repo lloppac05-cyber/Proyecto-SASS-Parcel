@@ -1,0 +1,67 @@
+@use "./../abstracts/" as core;
+.first-nav {
+    ul {
+        display: flex;
+        gap: 2.5rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        // Ajuste para móvil
+        @include core.response(sm) {
+            gap: 1.5rem;       // Reducimos el espacio entre palabras
+            justify-content: center; // Centramos los enlaces
+            width: 100%;
+        }
+
+        li a {
+            color: core.color(secondary);
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+
+            @include core.response(sm) {
+                font-size: 0.8rem; // Un poco más pequeño para que quepa bien
+            }
+        }
+    }
+}
+
+.second-nav {
+    @include core.nav();
+    @include core.centrar(center, center, row);
+    margin-top: 1rem;
+    background-color: core.color(primary); 
+    color: core.color(light);
+    
+    // Evitar que la barra azul sea demasiado alta en móvil
+    @include core.response(sm) {
+        padding: 1rem 0;
+        margin-top: 0; // Pegarlo más al hero si es necesario
+    }
+
+    ul {
+        display: flex;
+        gap: 3rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        @include core.response(sm) {
+            gap: 1.5rem; // Reducimos el espacio entre los iconos (Horarios, Alojamiento, etc.)
+            width: 100%;
+            justify-content: space-evenly; // Distribución equitativa
+        }
+
+        li span {
+            @include core.centrar(center, center, row);
+            
+            @include core.response(sm) {
+                flex-direction: column; // Icono arriba, texto abajo si el texto es largo
+                font-size: 0.75rem;
+            }
+        }
+    }
+}

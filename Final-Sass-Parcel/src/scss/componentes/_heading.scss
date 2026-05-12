@@ -1,0 +1,48 @@
+@use '../abstracts/' as core;
+
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
+
+.heading {
+    position: relative;
+    overflow: hidden;
+    padding: core.dimension(l);
+    @include core.alinear-izquierda(column, 20%);
+
+    @include core.response(sm) {
+        padding: core.dimension(m) 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    h1 {
+        font-family: core.$font-titulos;
+        color: core.color(primary);
+        font-size: core.dimension(m);
+        position: relative;
+        z-index: 1;
+
+        @include core.response(sm) {
+            font-size: 2.5rem; // Tamaño fijo más seguro para móvil
+            line-height: 1.1;
+        }
+    }
+
+    h2 {
+        color: core.color(primary);
+        font-size: 1rem;
+        margin-top: 0.5rem;
+        position: relative;
+        z-index: 1;
+        max-width: 28rem;
+        line-height: 1.5; 
+        text-align: left;
+
+        @include core.response(sm) {
+            text-align: center; // Centramos la descripción
+            max-width: 60%;    // Evitamos que el ancho fijo rompa el layout
+            font-size: 0.7rem;
+        }
+    }
+}

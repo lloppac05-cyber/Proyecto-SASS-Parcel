@@ -1,0 +1,60 @@
+@use '../abstracts/' as core;
+
+* {
+    font-family: core.$font-nav;
+    box-sizing: border-box; // Vital para que el padding no rompa el ancho
+}
+
+.footer {
+    background-color: core.color(tertiary);
+    padding: 2rem; // Añadimos espacio interno para que el contenido no toque los bordes
+    display: flex;
+    justify-content: space-between; // En ordenador: logo a la izquierda, iconos a la derecha
+    align-items: center;
+
+    img {
+        height: 8rem; // Reducimos un poco para que no sea tan gigante en escritorio
+        width: auto;
+    }
+
+    &__social {
+        display: flex;
+        gap: 1.5rem; // Espacio entre iconos
+        
+        // Eliminamos el ancho del 80% que causaba el error en la imagen image_82f613.png
+        width: auto; 
+
+        ion-icon {
+            width: 2rem;
+            height: 2rem;
+            padding: 0.5rem;
+            transition: transform 0.3s ease;
+            border: 0.1rem solid core.color(secondary);
+            border-radius: 50%;
+            color: core.color(light);
+            background-color: core.color(primary);
+
+            &:hover {
+                transform: scale(1.1);
+                background-color: core.color(secondary);
+            }
+        }
+    }
+
+    // --- CONFIGURACIÓN PARA MÓVIL ---
+    @include core.response(sm) {
+        flex-direction: column; // Logo arriba, iconos abajo
+        gap: 2rem;
+        text-align: center;
+        padding: 3rem 1rem;
+
+        img {
+            height: 7rem; // Un poco más pequeño en móvil
+        }
+
+        &__social {
+            justify-content: center; // Centramos los iconos horizontalmente
+            width: 100%;
+        }
+    }
+}

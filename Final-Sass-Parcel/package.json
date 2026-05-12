@@ -2,12 +2,16 @@
   "name": "final-sass-parcel",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "source": "src/index.html",
   "scripts": {
-    "watch": "sass -w scss/styles.scss css/style.css"
+    "start": "parcel",
+    "build": "parcel build --public-url ./"
   },
   "keywords": [],
   "author": "LauraLopera",
   "license": "ISC",
-  "type": "commonjs"
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.16.4",
+    "parcel": "^2.16.4"
+  }
 }

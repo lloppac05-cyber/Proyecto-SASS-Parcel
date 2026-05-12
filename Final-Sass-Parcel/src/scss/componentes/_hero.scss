@@ -1,0 +1,104 @@
+@use '../abstracts/' as core;
+
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 4fr 3fr;
+    min-height: 700px;
+    padding-top: 150px;  
+    position: relative;
+    overflow: hidden;
+    background-image: url("../assets/images/morenita-derecha.png");
+    background-repeat: no-repeat;
+    background-size: 100%; 
+    background-position: right -120px; 
+
+    @include core.response(sm) {
+        grid-template-columns: 1fr;
+        padding-top: 60px;
+        min-height: auto;
+        background-size: 100%;
+        background-position: 50% top; 
+    }
+}
+
+.heading {
+    background: transparent;
+    grid-area: 2 / 1 / 3 / 4;
+
+    @include core.response(sm) {
+        text-align: left;
+        padding: 0 1.5rem;
+        max-width: 70%;
+
+        h1 {
+            font-size: 1.5rem;
+            margin-top: 2.7rem;
+            color: core.color(primary);
+        }
+
+        p {
+            font-size: 0.8rem;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+    }
+}
+
+.second-nav { 
+    @include core.centrar();
+    grid-area: 3 / 1 / 4 / 4; 
+
+    @include core.response(sm) {
+        grid-area: 3 / 1 / 4 / 2; // Ajustamos al nuevo grid de 1 columna
+        margin-top: 2rem;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        @include core.response(sm) {
+            justify-content: space-around; // Distribución mejorada en móvil
+            width: 100%;
+        }
+
+        li {
+            padding: 1rem;
+            list-style: none;
+
+            @include core.response(sm) {
+                padding: 0.5rem;
+            }
+
+            a {
+                text-decoration: none;
+                
+                // Si quieres que el texto del icono no se amontone
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                ion-icon {
+                    font-size: 2rem;
+                    margin-bottom: 0.5rem;
+                    background: core.color(light);
+                    padding: 1rem;
+                    border-radius: 50%;
+                    color: core.color(primary);
+
+                    @include core.response(sm) {
+                        font-size: 1.5rem; // Iconos un pelín más pequeños
+                        padding: 0.8rem;
+                    }
+                }
+                
+                span {
+                    @include core.response(sm) {
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+        }
+    }
+}

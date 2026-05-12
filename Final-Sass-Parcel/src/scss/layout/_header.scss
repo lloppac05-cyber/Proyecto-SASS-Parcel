@@ -1,0 +1,47 @@
+@use '../abstracts/' as core;
+
+*
+{
+    font-family: core.$font-nav;
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    background: transparent;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+
+    nav {
+        ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            
+            a {
+                text-decoration: none;
+                text-transform: uppercase;
+                font-weight: bold;
+                color: core.color(primary); 
+            }
+        }
+    }
+
+    .logo {
+        display: flex;
+        justify-content: center;
+        
+        img, svg {
+            height: 50px;
+            width: auto;
+        }
+    }
+
+    @include core.response(sm) {
+        padding: 1rem 0;
+    }
+}
