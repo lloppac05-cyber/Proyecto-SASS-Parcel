@@ -10,7 +10,8 @@
     margin: 0 auto;
 
     h2{
-        @include core.centrar();
+        @include core.flexbox(column, center, center);
+
         grid-column: 1/-1;
         font-family: core.$font-titulos;
         color: core.color(primary);
@@ -29,7 +30,6 @@
             border-radius: 10px;
         }
     }
-
     // TABLET
     @include core.response(md){
         grid-template-columns: repeat(2, 1fr);
@@ -50,6 +50,7 @@
     transition: all .35s ease;
     display: flex;
     flex-direction: column;
+    
 
     &:hover{
         transform: translateY(10px);
@@ -88,7 +89,8 @@
         color: core.color(secondary);
         font-size: 1.5rem;
         margin-bottom: core.dimension(s);
-        @include core.centrar();
+        @include core.flexbox(column, center, center);
+
     }
 
     // Texto

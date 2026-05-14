@@ -1,57 +1,108 @@
 // Importar variables
+@use "sass:map";
 @use "variables" as core;
 
-// Mixin para centrar con flexbox
-@mixin centrar($justify: center, $align: center, $direccion: column) {
+/// Mixin para estilos de navegación
+@mixin nav($gap: 2rem, $padding: 1rem) {
+  ul {
     display: flex;
-    justify-content: $justify;
-    align-items: $align;
-    flex-direction: $direccion;
-}
-
-// Mixin para alinear a la izquierda
-@mixin alinear-izquierda($direccion: column, $padding-lateral: 5%) {
-    display: flex;
-    flex-direction: $direccion;
-    justify-content: center;
-    align-items: flex-start;
-    text-align: left;
-    padding-left: $padding-lateral;
-}
-
-// Mixin para alinear a la derecha
-@mixin alinear-derecha($direccion: column, $padding-lateral: 5%) {
-    display: flex;
-    flex-direction: $direccion;
-    justify-content: center;
-    align-items: flex-start;
-    text-align: right;
-    padding-left: $padding-lateral;
-}
-
-
-// Mixin para estilos de navegación
-@mixin nav {
-    ul {
-        display: flex;
-        list-style: none;
-        gap: 2rem; 
-        padding: 1rem;
-    }
-
-    a {
-        text-decoration: none;
-    }
-}
-
-// Mixin para grid flexible
-@mixin grid-flexible($min-size: 18rem, $gap: 1.5rem){
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax($min-size, 1fr));
+    list-style: none;
     gap: $gap;
+    padding: $padding;
+  }
+
+  a {
+    text-decoration: none;
+  }
 }
 
-// Mixin para media queries responsive
+
+/// Crea una rejilla flexible con columnas auto-ajustables
+/// @group Layout 
+/// @param {Number} $min-size [18rem] - Tamaño mínimo de cada columna 
+/// @param {Number} $gap [1.5rem] - Espaciado entre celdas 
+/// @example 
+///     .products-list{
+///         @include core.grid-flexible(18rem, 1.5rem);
+/// }
+@mixin grid-flexible($min-size: 18rem, $gap: 1.5rem, $fit: auto-fit) {
+  display: grid;
+  grid-template-columns: repeat($fit, minmax($min-size, 1fr));
+  gap: $gap;
+}
+
+
+/// Aplica un borde sólido y un radio de esquina estándar
+/// @group Estilos Base
+@mixin border-radius($color: core.$primary, $radius: 0.5rem) {
+  border: 0.1rem solid $color;
+  border-radius: $radius;
+}
+
+
+/// Mixin MQ
+$sizes: (
+  small: 576px,
+  medium: 768px,
+  large: 992px,
+  xlarge: 1200px,
+  xxlarge: 1400px
+);
+
+@mixin media($key, $type: min) {
+  $size: map.get($sizes, $key);
+
+  @media (#{$type}-width: $size) {
+    @content;
+  }
+}
+
+
+/// Configuración rápida de Flexbox 
+/// @group Layout 
+/// @param {String} $direction [row] - Dirección del flex 
+/// @param {String} $justifycontent [center] - Alineación horizontal 
+/// @param {String} $alignitem [center] - Alineación vertical 
+/// @example scss - uso del mixin flexposition
+/// .footer {
+///     @include core.flexposition(column, center, center);
+/// }
+@mixin flexbox($direction: column, $justify: center, $align: center, $text: center, $padding-x: 0) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  text-align: $text;
+  padding-left: $padding-x;
+  padding-right: $padding-x;
+}
+
+
+@mixin layout-basico($cols: 7, $gap: 2rem) {
+  display: grid;
+  grid-template-columns:
+    minmax(10rem, 1fr)
+    repeat($cols, minmax(min-content, 16rem))
+    minmax(10rem, 1fr);
+  grid-template-rows: repeat(3, min-content);
+  gap: $gap;
+  z-index: 100;
+}
+
+
+/// Cabeceras dinámicas
+@mixin cabeceras($scale: 2) {
+  @for $i from 1 through 3 {
+    h#{$i} {
+      font-family: core.$font-family;
+      font-size: core.size(sm) * $scale;
+      font-weight: core.weight("light");
+    }
+  }
+}
+
+
+/// Mixin para media queries responsive
 @mixin response($breakpoint) {
     @if $breakpoint == sm {
         @media (max-width: 640px) {

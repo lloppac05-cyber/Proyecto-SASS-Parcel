@@ -140,6 +140,7 @@ img {
 }
 
 .productos-lista h2 {
+  text-align: center;
   color: #010440;
   letter-spacing: .1rem;
   flex-direction: column;
@@ -147,6 +148,8 @@ img {
   justify-content: center;
   align-items: center;
   margin-bottom: 2rem;
+  padding-left: 0;
+  padding-right: 0;
   font-family: Berkshire Swash, serif;
   font-size: 3rem;
   display: flex;
@@ -217,10 +220,13 @@ img {
 
 .producto-tarjeta__titulo {
   color: #030a87ea;
+  text-align: center;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-bottom: 2rem;
+  padding-left: 0;
+  padding-right: 0;
   font-family: Berkshire Swash, serif;
   font-size: 1.5rem;
   display: flex;
@@ -279,16 +285,21 @@ img {
 }
 
 .botones-colores {
-  flex-wrap: wrap;
-  gap: 10px;
+  text-align: center;
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding-left: 0;
+  padding-right: 0;
   display: flex;
 }
 
 .botones-colores button {
   cursor: pointer;
   border: 1px solid #010440;
-  border-radius: 20%;
-  padding: 10px 20px;
+  border-radius: .5rem;
+  padding: 1rem 2rem;
   transition: all .3s;
 }
 
@@ -298,7 +309,7 @@ img {
 }
 
 .botones-colores button:nth-child(2) {
-  color: #010440;
+  color: #d3eab7;
   background-color: #030a87ea;
 }
 
@@ -309,7 +320,7 @@ img {
 
 .botones-colores button:nth-child(4) {
   color: #010440;
-  background-color: #c44b88;
+  background-color: #c5799f52;
 }
 
 .botones-colores button:nth-child(5) {
@@ -319,62 +330,154 @@ img {
 
 .botones-colores button:hover {
   opacity: .8;
-  transform: translateY(-2px);
+  transform: translateY(2px);
+}
+
+@media (width <= 640px) {
+  .botones-colores .botones-colores {
+    justify-content: center;
+  }
+}
+
+.formulario {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 35rem;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+}
+
+.formulario .registro {
+  color: #010440;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-family: Berkshire Swash, serif;
+  font-size: 2rem;
+  display: block;
+}
+
+.formulario .form-registro {
+  background-color: #c5799f52;
+  border-radius: 1rem;
+  gap: 1rem;
+  width: 100%;
+  max-width: 40rem;
+  padding: 2rem;
+  display: grid;
+}
+
+@media (width >= 768px) {
+  .formulario .form-registro {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .formulario .form-registro .nombre, .formulario .form-registro .apellidos, .formulario .form-registro .direccion, .formulario .form-registro .email, .formulario .form-registro .passw, .formulario .form-registro .passw-confirm {
+    flex-direction: column;
+    display: flex;
+  }
+
+  .formulario .form-registro .direccion, .formulario .form-registro .email, .formulario .form-registro .passw, .formulario .form-registro .passw-confirm {
+    grid-column: span 2;
+  }
+}
+
+.formulario .form-registro label {
+  color: #010440;
+  margin-bottom: .3rem;
+  font-weight: bold;
+}
+
+.formulario .form-registro input {
+  border: 1px solid #010440;
+  border-radius: .5rem;
+  outline: none;
+  padding: .5rem;
+  font-size: .9rem;
+  transition: all .3s;
+}
+
+.formulario .form-registro input:focus {
+  border-color: #030a87ea;
+  box-shadow: 0 0 5px #030a87ea;
+}
+
+.formulario .form-registro button {
+  color: #d3eab7;
+  cursor: pointer;
+  background-color: #010440;
+  border: none;
+  border-radius: .5rem;
+  grid-column: span 2;
+  padding: .7rem;
+  font-size: 1rem;
+  transition: all .3s;
+}
+
+.formulario .form-registro button:hover {
+  opacity: .9;
+  transform: translateY(2px);
+}
+
+.formulario .form-registro p {
+  text-align: center;
+  grid-column: span 2;
+  margin-top: 2rem;
+}
+
+.formulario .form-registro p .volver {
+  color: #030a87ea;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.formulario .form-registro p .volver:hover {
+  text-decoration: underline;
 }
 
 .heading {
-  text-align: left;
+  text-align: center;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  padding: 8rem 8rem 8rem 20%;
+  align-items: center;
+  width: 100%;
+  padding: 10rem 4rem;
   display: flex;
   position: relative;
   overflow: hidden;
 }
 
-@media (width <= 640px) {
+@media (width >= 768px) {
   .heading {
-    text-align: center;
-    flex-direction: column;
-    align-items: center;
-    padding: 4rem 1rem;
-    display: flex;
+    text-align: left;
+    align-items: flex-start;
+    padding: 3rem 10%;
   }
 }
 
 .heading h1 {
   color: #010440;
-  z-index: 1;
+  z-index: 2;
+  width: 100%;
+  max-width: 400px;
+  margin: 0;
   font-family: Berkshire Swash, serif;
   font-size: 4rem;
-  position: relative;
-}
-
-@media (width <= 640px) {
-  .heading h1 {
-    font-size: 2.5rem;
-    line-height: 1.1;
-  }
+  line-height: 1.1;
 }
 
 .heading h2 {
   color: #010440;
-  z-index: 1;
-  text-align: left;
-  max-width: 28rem;
-  margin-top: .5rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  position: relative;
-}
-
-@media (width <= 640px) {
-  .heading h2 {
-    text-align: center;
-    max-width: 60%;
-    font-size: .7rem;
-  }
+  z-index: 2;
+  width: 100%;
+  max-width: 600px;
+  margin-top: 1.5rem;
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  font-weight: 600;
+  line-height: 1.6;
 }
 
 .first-nav ul {
@@ -420,12 +523,15 @@ img {
 }
 
 .second-nav {
+  text-align: center;
   color: #d3eab7;
   background-color: #010440;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 1rem;
+  padding-left: 0;
+  padding-right: 0;
   display: flex;
 }
 
@@ -453,9 +559,12 @@ img {
 }
 
 .second-nav ul li span {
-  flex-direction: row;
+  text-align: center;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-left: 0;
+  padding-right: 0;
   display: flex;
 }
 
@@ -515,10 +624,13 @@ img {
 }
 
 .second-nav {
+  text-align: center;
   flex-direction: column;
   grid-area: 3 / 1 / 4 / 4;
   justify-content: center;
   align-items: center;
+  padding-left: 0;
+  padding-right: 0;
   display: flex;
 }
 

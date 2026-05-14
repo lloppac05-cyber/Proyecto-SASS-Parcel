@@ -6,42 +6,38 @@
 }
 
 .botones-colores {
-    display: flex; // Para que se vean en línea
-    gap: 10px;    // Espacio entre ellos
-    flex-wrap: wrap; // Por si no caben en móvil
+    @include core.flexbox(row, center, center);
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
 
     button {
-        border-radius: 20%;
+        @include core.border-radius($color: core.color(primary), $radius: 0.5rem);
         border: 1px solid core.color(primary);
-        padding: 10px 20px;
+        padding: 1rem 2rem;
         cursor: pointer;
         transition: all 0.3s ease;
 
-        // Botón 1: Primary
         &:nth-child(1) {
             background-color: core.color(primary);
             color: core.color(light);
         }
 
-        // Botón 2: Secondary
         &:nth-child(2) {
             background-color: core.color(secondary);
-            color: core.color(primary);
+            color: core.color(light);
         }
 
-        // Botón 3: Tertiary
         &:nth-child(3) {
             background-color: core.color(tertiary);
             color: core.color(light);
         }
 
-        // Botón 4: Quaternary
         &:nth-child(4) {
             background-color: core.color(quaternary);
             color: core.color(primary);
         }
 
-        // Botón 5: Light
         &:nth-child(5) {
             background-color: core.color(light);
             color: core.color(secondary);
@@ -49,7 +45,13 @@
 
         &:hover {
             opacity: 0.8;
-            transform: translateY(-2px);
+            transform: translateY(2px);
         }
     }
+    @include core.response(sm) {
+        .botones-colores {
+            justify-content: center;
+        }
+    }
+
 }

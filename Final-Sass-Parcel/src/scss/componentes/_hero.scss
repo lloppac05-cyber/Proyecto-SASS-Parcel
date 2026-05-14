@@ -45,7 +45,8 @@
 }
 
 .second-nav { 
-    @include core.centrar();
+    @include core.flexbox(column, center, center);
+
     grid-area: 3 / 1 / 4 / 4; 
 
     @include core.response(sm) {
@@ -73,8 +74,6 @@
 
             a {
                 text-decoration: none;
-                
-                // Si quieres que el texto del icono no se amontone
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -88,7 +87,7 @@
                     color: core.color(primary);
 
                     @include core.response(sm) {
-                        font-size: 1.5rem; // Iconos un pelín más pequeños
+                        font-size: 1.5rem;
                         padding: 0.8rem;
                     }
                 }

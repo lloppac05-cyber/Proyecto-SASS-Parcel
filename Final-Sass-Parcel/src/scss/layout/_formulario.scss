@@ -1,0 +1,108 @@
+@use "../abstracts" as core;
+
+.formulario {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: core.dimension(s);
+  max-width: 35rem;
+  margin: 0 auto; 
+  flex-direction: column;
+  align-items: center;
+
+  .registro {
+    font-family: core.$font-titulos;
+    color: core.color(primary);
+    text-align: center;
+    margin-bottom: core.dimension(s);
+    font-size: core.dimension(s);
+    display: block; 
+  }
+
+  .form-registro {
+    background-color: core.color(quaternary);
+    padding: core.dimension(s);
+    border-radius: 1rem;
+    width: 100%;
+    max-width: 40rem;
+    display: grid;
+    gap: core.dimension(xs);
+
+    // GRID RESPONSIVE
+    @include core.media(medium) {
+      grid-template-columns: 1fr 1fr;
+      gap: core.dimension(s);
+
+      .nombre,
+      .apellidos,
+      .direccion,
+      .email,
+      .passw,
+      .passw-confirm {
+        display: flex;
+        flex-direction: column;
+      }
+
+      // Campos que deben ocupar toda la fila
+      .direccion,
+      .email,
+      .passw,
+      .passw-confirm {
+        grid-column: span 2;
+      }
+    }
+
+    label {
+      font-weight: bold;
+      color: core.color(primary);
+      margin-bottom: 0.3rem;
+    }
+
+    input {
+      padding: 0.5rem;
+      border: 1px solid core.color(primary);
+      border-radius: 0.5rem;
+      font-size: 0.9rem;
+      outline: none;
+      transition: 0.3s ease;
+
+      &:focus {
+        border-color: core.color(secondary);
+        box-shadow: 0 0 5px core.color(secondary);
+      }
+    }
+
+    button {
+        grid-column: span 2;
+        background-color: core.color(primary);
+        color: core.color(light);
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: 0.3s ease;
+        padding: 0.7rem;
+        font-size: 1rem;
+
+      &:hover {
+        opacity: 0.9;
+        transform: translateY(2px);
+      }
+    }
+
+    p {
+      grid-column: span 2;
+      text-align: center;
+      margin-top: core.dimension(s);
+
+      .volver {
+        color: core.color(secondary);
+        text-decoration: none;
+        font-weight: bold;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
